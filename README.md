@@ -345,7 +345,6 @@ so a crash can't leave half a file.
 ## Credits
 
 - Maintained and customized by **sovon** — CSTE 18, Noakhali Science and Technology University (NSTU).
-- Originally created by Georgios Kiritsis as [Scribe](https://github.com/Scribe-IDE/Scribe).
 
 ## License
 
