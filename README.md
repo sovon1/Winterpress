@@ -1,13 +1,13 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.svg">
-    <img src="docs/logo-light.svg" alt="Scribe, the LaTeX editor for working scientists" width="460">
+    <img src="docs/logo-light.svg" alt="Winterpress, the LaTeX editor for working scientists" width="460">
   </picture>
 </p>
 
 <p align="center">
-  <a href="https://github.com/Scribe-IDE/Scribe/actions/workflows/check.yml"><img src="https://img.shields.io/github/actions/workflow/status/Scribe-IDE/Scribe/check.yml?branch=main&style=flat-square&labelColor=1a1917&label=checks" alt="Checks"></a>
-  <a href="https://github.com/Scribe-IDE/Scribe/releases/latest"><img src="https://img.shields.io/github/v/release/Scribe-IDE/Scribe?style=flat-square&color=d4a556&labelColor=1a1917&label=release" alt="Latest release"></a>
+  <a href="https://github.com/sovon1/Winterpress/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/sovon1/Winterpress/release.yml?branch=main&style=flat-square&labelColor=1a1917&label=build" alt="Build"></a>
+  <a href="https://github.com/sovon1/Winterpress/releases/latest"><img src="https://img.shields.io/github/v/release/sovon1/Winterpress?style=flat-square&color=d4a556&labelColor=1a1917&label=release" alt="Latest release"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-d4a556?style=flat-square&labelColor=1a1917" alt="MIT license"></a>
   <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-d4a556?style=flat-square&labelColor=1a1917" alt="macOS, Windows, Linux">
   <img src="https://img.shields.io/badge/Tauri-2-d4a556?style=flat-square&labelColor=1a1917&logo=tauri&logoColor=white" alt="Tauri 2">
@@ -16,8 +16,6 @@
 </p>
 
 <p align="center">
-  <a href="https://scribe.georgekiritsis.com"><b>Website</b></a>
-  &nbsp;&middot;&nbsp;
   <a href="#features"><b>Features</b></a>
   &nbsp;&middot;&nbsp;
   <a href="#notebooks-in-the-paper"><b>Notebooks</b></a>
@@ -30,19 +28,21 @@
   &nbsp;&middot;&nbsp;
   <a href="#development"><b>Development</b></a>
   &nbsp;&middot;&nbsp;
+  <a href="#credits"><b>Credits</b></a>
+  &nbsp;&middot;&nbsp;
   <a href="#license"><b>License</b></a>
 </p>
 
 <br>
 
-Scribe is a desktop editor for LaTeX papers. A paper, the Python notebooks behind it and the
+Winterpress is a desktop editor for LaTeX papers. A paper, the Python notebooks behind it and the
 figures they make live in one project folder, and the figures and numbers in the PDF come
 straight from the notebooks. Everything compiles on your machine with Tectonic or TeX Live.
 There is no account and nothing is uploaded.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshot-dark.png">
-  <img src="docs/screenshot-light.png" alt="Scribe with a paper open: the source on the left, the compiled PDF with a figure from the notebook on the right">
+  <img src="docs/screenshot-light.png" alt="Winterpress with a paper open: the source on the left, the compiled PDF with a figure from the notebook on the right">
 </picture>
 
 ## Features
@@ -85,7 +85,7 @@ The editor is CodeMirror 6 and knows LaTeX.
 ### Notebooks in the paper
 
 Python files with `# %%` cells and Jupyter `.ipynb` notebooks open as cells and run in a Python
-kernel that Scribe keeps running. A figure cell saves `figures/<id>.pdf`; `nbval` and `nbtable`
+kernel that Winterpress keeps running. A figure cell saves `figures/<id>.pdf`; `nbval` and `nbtable`
 send numbers and tables to the paper, typeset with siunitx. When a notebook changes, its figures
 are marked out of date and rerun on the next compile. Each run records the Python version,
 packages, seed and git commit, which the paper can print with `\nbenv`.
@@ -179,7 +179,7 @@ editor, Overleaf included.
 
 ### Revisions and the response to reviewers
 
-- **Compare with an earlier version**: pick a git commit or a version Scribe saved, and latexdiff
+- **Compare with an earlier version**: pick a git commit or a version Winterpress saved, and latexdiff
   marks what changed, in the PDF.
 - **Response to Reviewers** starts a letter from a template, one reply per point; text selected
   in the marked-up PDF is quoted into it with its page.
@@ -211,7 +211,7 @@ including while typing in `\cite{}`. The References panel lists the bibliography
 
 ### Looks
 
-- **Eleven themes**: Scribe Dark and Light, Gruvbox, Solarized Dark and Light, Nord, Catppuccin
+- **Eleven themes**: Winterpress Dark and Light, Gruvbox, Solarized Dark and Light, Nord, Catppuccin
   Mocha and Latte, GitHub Dark and Light, Tokyo Night. Or follow the system's light and dark.
 - **Your own theme** from a theme editor, every colour live, shared as a JSON file. Any accent
   colour on any theme.
@@ -254,21 +254,12 @@ On Windows and Linux, <kbd>Ctrl</kbd> takes the place of <kbd>⌘</kbd> and <kbd
 
 ## Download
 
-Installers for macOS, Windows and Linux are attached to each
-[release](https://github.com/Scribe-IDE/Scribe/releases/latest). Scribe updates itself from
-there: when a new version is out, it offers to install it.
-
-The macOS app isn't notarized by Apple yet, so the first time macOS says it can't verify Scribe.
-Press Done, open System Settings > Privacy & Security, and press Open Anyway at the bottom; Scribe
-opens normally from then on. Or, in Terminal:
-
-```sh
-xattr -dr com.apple.quarantine /Applications/Scribe.app
-```
+Installers for Windows are attached to each [release](https://github.com/sovon1/Winterpress/releases).
+Download the installer (`Winterpress_..._x64-setup.exe` or `.msi`) from the latest release to install Winterpress.
 
 ## Building from source
 
-Scribe is a [Tauri 2](https://tauri.app) app: a TypeScript front end and a Rust back end. On
+Winterpress is a [Tauri 2](https://tauri.app) app: a TypeScript front end and a Rust back end. On
 every system you need:
 
 - [Node.js](https://nodejs.org) 20 or later
@@ -285,6 +276,18 @@ npm run tauri dev      # run it, with hot reload
 npm run tauri build    # an installable build, in src-tauri/target/release/bundle/
 ```
 
+### Windows
+
+1. Install the [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+   with the "Desktop development with C++" workload.
+2. WebView2 ships with Windows 10 and 11; on older systems install the
+   [Evergreen runtime](https://developer.microsoft.com/microsoft-edge/webview2/).
+3. Install Rust with `rustup` (the default MSVC toolchain) and Node.js.
+4. For TeX, let Winterpress install Tectonic, or install [MiKTeX](https://miktex.org) or TeX Live;
+   `latexmk` on MiKTeX also needs Perl.
+
+`npm run tauri build` produces an `.msi` and an `.exe` installer.
+
 ### macOS
 
 ```sh
@@ -293,20 +296,7 @@ brew install node rustup tectonic
 rustup default stable
 ```
 
-`npm run tauri build -- --bundles app` makes `Scribe.app` alone, without a disk image. macOS is
-where Scribe is used every day.
-
-### Windows
-
-1. Install the [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
-   with the "Desktop development with C++" workload.
-2. WebView2 ships with Windows 10 and 11; on older systems install the
-   [Evergreen runtime](https://developer.microsoft.com/microsoft-edge/webview2/).
-3. Install Rust with `rustup` (the default MSVC toolchain) and Node.js.
-4. For TeX, let Scribe install Tectonic, or install [MiKTeX](https://miktex.org) or TeX Live;
-   `latexmk` on MiKTeX also needs Perl.
-
-`npm run tauri build` produces an `.msi` and an `.exe` installer.
+`npm run tauri build -- --bundles app` makes `Winterpress.app` alone, without a disk image.
 
 ### Linux
 
@@ -336,12 +326,8 @@ sudo pacman -S webkit2gtk-4.1 base-devel curl wget file openssl \
 
 ### If compiling or notebooks don't work
 
-Apps opened from the desktop don't always see the `PATH` your shell has. Scribe reads it from
-your login shell at start-up; to see what it finds, run the binary with `--check-tools`:
-
-```sh
-src-tauri/target/release/bundle/macos/Scribe.app/Contents/MacOS/scribe --check-tools
-```
+Apps opened from the desktop don't always see the `PATH` your shell has. Winterpress reads it from
+your login shell at start-up; to see what it finds, run the binary with `--check-tools`.
 
 ## Development
 
@@ -356,14 +342,10 @@ Every command that touches files takes the project folder and a path inside it, 
 path that leaves the folder, symlinks included. Saves are written to a temporary file and renamed,
 so a crash can't leave half a file.
 
-```sh
-cd src-tauri && cargo test     # back end tests; compiles the example paper
-npx tsc --noEmit               # type-check the front end
-```
+## Credits
 
-Every push runs both on GitHub Actions. A release is a tag: `node scripts/version.mjs 0.2.0`
-sets the version everywhere, the notes go in [`CHANGELOG.md`](CHANGELOG.md), and pushing the tag
-`v0.2.0` builds and drafts the release.
+- Maintained and customized by **sovon** — CSTE 18, Noakhali Science and Technology University (NSTU).
+- Originally created by Georgios Kiritsis as [Scribe](https://github.com/Scribe-IDE/Scribe).
 
 ## License
 
