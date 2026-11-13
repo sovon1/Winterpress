@@ -2,6 +2,12 @@
 
 Each version's notes become its release notes on GitHub.
 
+## 1.2.4
+
+- First Winterpress build: Scribe rebranded as Winterpress (product name, bundle ID so.sovon.winterpress, window and page titles).
+- Updater removed: this build never contacts Scribe's update server; new versions are installed manually from GitHub Releases.
+- Release pipeline trimmed to a Windows-only build with no signing-key requirement.
+
 ## 1.2.3
 
 - Linux AppImage: notebooks, the terminal, git and LaTeX use your system's libraries again, so
