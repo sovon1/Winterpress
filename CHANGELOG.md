@@ -2,6 +2,10 @@
 
 Each version's notes become its release notes on GitHub.
 
+## 1.2.6
+
+- Fix: restore valid updater schema with Winterpress repo endpoints and pubkey so the app initializes without crashing.
+
 ## 1.2.5
 
 - Fix: restore stub updater plugin config so the app launches (the plugin is still registered in the Rust backend and panics without any config).
