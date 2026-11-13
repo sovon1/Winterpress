@@ -2,6 +2,10 @@
 
 Each version's notes become its release notes on GitHub.
 
+## 1.2.5
+
+- Fix: restore stub updater plugin config so the app launches (the plugin is still registered in the Rust backend and panics without any config).
+
 ## 1.2.4
 
 - First Winterpress build: Scribe rebranded as Winterpress (product name, bundle ID so.sovon.winterpress, window and page titles).
