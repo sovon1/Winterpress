@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Scribe",
+  "productName": "Winterpress",
   "version": "1.2.3",
-  "identifier": "com.georgekiritsis.scribe",
+  "identifier": "so.sovon.winterpress",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Scribe",
+        "title": "Winterpress",
         "width": 1400,
         "height": 860,
         "minWidth": 820,
@@ -41,14 +41,6 @@
     ],
     "macOS": {
       "signingIdentity": "-"
-    }
-  },
-  "plugins": {
-    "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDVFMUE2QTU2OEIwODhDMTcKUldRWGpBaUxWbW9hWGgzWjhyZG8rMll5RVduc3dUMDNGUlRiM1FCZDVOWWdqTkU3NERQYzdVbWMK",
-      "endpoints": [
-        "https://github.com/Scribe-IDE/Scribe/releases/latest/download/latest.json"
-      ]
     }
   }
 }
