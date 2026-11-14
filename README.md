@@ -346,6 +346,4 @@ so a crash can't leave half a file.
 
 - Maintained and customized by **sovon** — CSTE 18, Noakhali Science and Technology University (NSTU).
 
-## License
 
-[MIT](LICENSE)
