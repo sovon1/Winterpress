@@ -2641,6 +2641,15 @@ fn pty_kill() -> Result<(), String> {
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    #[cfg(target_os = "windows")]
+    {
+        // On Windows laptops (especially Intel UHD/HD integrated graphics), WebView2's Direct3D
+        // hardware acceleration frequently deadlocks or crashes the GPU compositor process.
+        // Setting --disable-gpu ensures stable, lag-free software compositing without freezes.
+        if std::env::var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS").is_err() {
+            std::env::set_var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--disable-gpu");
+        }
+    }
     leave_appimage_env();
     adopt_shell_path();
     add_tools_dir_to_path();

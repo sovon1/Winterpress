@@ -12,7 +12,7 @@ function offer(update: Update) {
   card.className = "update-card";
   card.setAttribute("role", "status");
   const text = document.createElement("p");
-  text.textContent = `Scribe ${update.version} is ready to install.`;
+  text.textContent = `Winterpress ${update.version} is ready to install.`;
   const notes = update.body?.trim();
   if (notes) text.title = notes;
   const later = document.createElement("button");
@@ -52,7 +52,7 @@ export async function checkForUpdates(quiet = false) {
   try {
     const update = await check();
     if (update) offer(update);
-    else if (!quiet) setStatus("Scribe is up to date", "ok");
+    else if (!quiet) setStatus("Winterpress is up to date", "ok");
   } catch (e) {
     if (!quiet) setStatus(`Couldn't check for updates: ${e}`, "err");
   }

@@ -74,7 +74,7 @@ export async function renderHistory() {
   if (panel.hidden || !root) return;
   const rel = current;
   if (!rel || !KEPT.test(rel)) {
-    empty("Open a file to see its earlier versions. Scribe keeps one each time you save, for papers, notes, notebooks and bibliographies.");
+    empty("Open a file to see its earlier versions. Winterpress keeps one each time you save, for papers, notes, notebooks and bibliographies.");
     return;
   }
   const mine = ++job;

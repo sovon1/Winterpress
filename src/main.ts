@@ -252,7 +252,7 @@ register(
   { id: "file.review", group: "Notes", title: "Review Cards", enabled: hasProject, run: () => reviewCards() },
   { id: "file.anki", group: "Notes", title: "Export Cards for Anki…", enabled: hasProject, run: exportForAnki },
   {
-    id: "help.about", group: "Help", title: "About Scribe",
+    id: "help.about", group: "Help", title: "About Winterpress",
     run: () => { $<HTMLDialogElement>("about").showModal(); },
   },
 );

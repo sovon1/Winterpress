@@ -140,7 +140,7 @@ export async function deleteEntry(rel: string, isDir: boolean) {
     isDir
       ? `Move the folder “${rel}” and everything in it to the Trash?`
       : `Move “${rel}” to the Trash?`,
-    { title: "Scribe", kind: "warning", okLabel: "Move to Trash", cancelLabel: "Cancel" },
+    { title: "Winterpress", kind: "warning", okLabel: "Move to Trash", cancelLabel: "Cancel" },
   );
   if (!confirmed) return;
   try {

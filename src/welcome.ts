@@ -30,22 +30,22 @@ export const WELCOME_DOC: { src: string; html?: string }[] = [
 \\usepackage{scribe-figures}`,
   },
   {
-    src: `\\title{Scribe: Papers That\\\\
+    src: `\\title{Winterpress: Papers That\\\\
   Run Their Own Figures}
 \\author{You}
 
 \\begin{document}
 \\maketitle`,
-    html: `<h1>Scribe: Papers That<br>Run Their Own Figures</h1><p class="paper-author">You</p>`,
+    html: `<h1>Winterpress: Papers That<br>Run Their Own Figures</h1><p class="paper-author">You</p>`,
   },
   {
     src: `\\begin{abstract}
-Scribe is a desktop editor for LaTeX
+Winterpress is a desktop editor for LaTeX
 and Python. Write the paper, run the
 notebook, and the figures land in the
 PDF, already up to date.
 \\end{abstract}`,
-    html: `<div class="paper-abstract"><strong>Abstract</strong><p>Scribe is a desktop editor for LaTeX and Python. Write the paper, run the notebook, and the figures land in the PDF, already up to date.</p></div>`,
+    html: `<div class="paper-abstract"><strong>Abstract</strong><p>Winterpress is a desktop editor for LaTeX and Python. Write the paper, run the notebook, and the figures land in the PDF, already up to date.</p></div>`,
   },
   {
     src: `\\section{Write}
@@ -147,27 +147,38 @@ export function startTypewriter() {
   let block = 0;
   let char = 0;
   let typed = "";
+  let typedHtml = "";
   let setProgress = mountPaperBlock(paper, WELCOME_DOC[0].html);
 
   function tick() {
+    if (welcomeEl.classList.contains("hidden")) {
+      stopTypewriter();
+      return;
+    }
     const src = WELCOME_DOC[block].src;
     if (char <= src.length) {
-      el.innerHTML = highlightTex(typed + src.slice(0, char)) + cursor;
-      el.scrollTop = el.scrollHeight;
+      // Highlight only the current block chunk; reuse pre-rendered HTML for prior blocks
+      el.innerHTML = typedHtml + highlightTex(src.slice(0, char)) + cursor;
+      // Throttle forced layout reflow to newlines or every 4th character
+      if (char % 4 === 0 || src[char - 1] === "\n") {
+        el.scrollTop = el.scrollHeight;
+      }
       setProgress(char / src.length);
-      const pause = src[char - 1] === "\n" ? 110 : 14 + Math.random() * 22;
+      const pause = src[char - 1] === "\n" ? 140 : 28 + Math.random() * 22;
       char++;
       twTimer = window.setTimeout(tick, pause);
       return;
     }
     typed += src + "\n\n";
+    typedHtml += highlightTex(src) + "\n\n";
     block++;
     char = 0;
     if (block < WELCOME_DOC.length) {
       setProgress = mountPaperBlock(paper, WELCOME_DOC[block].html);
-      twTimer = window.setTimeout(tick, 320);
+      twTimer = window.setTimeout(tick, 350);
     } else {
-      el.innerHTML = highlightTex(typed.trimEnd()) + cursor;
+      el.innerHTML = typedHtml.trimEnd() + cursor;
+      el.scrollTop = el.scrollHeight;
       twTimer = null;
     }
   }
@@ -254,7 +265,7 @@ export function setupRow(ok: boolean, name: string, detail: string): HTMLElement
 
 // No LaTeX: one click installs Tectonic, instead of a page of instructions.
 function installRow(): HTMLElement {
-  const li = setupRow(false, "LaTeX not found", "Scribe can install Tectonic (about 20 MB) for you, or install TeX Live yourself.");
+  const li = setupRow(false, "LaTeX not found", "Winterpress can install Tectonic (about 20 MB) for you, or install TeX Live yourself.");
   const button = document.createElement("button");
   button.className = "btn btn-outline setup-install";
   button.textContent = "Install LaTeX";
@@ -265,7 +276,7 @@ function installRow(): HTMLElement {
 
 let installing = false;
 
-/** Download Tectonic into Scribe's own folder; afterwards papers compile with no TeX installed. */
+/** Download Tectonic into Winterpress's own folder; afterwards papers compile with no TeX installed. */
 export async function installLatex() {
   if (installing) return;
   installing = true;
