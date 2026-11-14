@@ -2,6 +2,12 @@
 
 Each version's notes become its release notes on GitHub.
 
+## 1.2.7
+
+- Performance: disable WebView2 GPU hardware acceleration on Windows to eliminate GPU crashes and 5-10s window freezes on Intel UHD/integrated laptop graphics.
+- Performance: optimize welcome screen typewriter animation, caching rendered HTML and throttling DOM layout queries to drastically cut CPU usage.
+- Rebrand: update all remaining UI labels, dialogs, welcome text, and notifications from Scribe to Winterpress.
+
 ## 1.2.6
 
 - Fix: restore valid updater schema with Winterpress repo endpoints and pubkey so the app initializes without crashing.
